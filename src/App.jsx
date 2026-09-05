@@ -10,7 +10,7 @@ export default function App() {
     if (email && password) {
       localStorage.setItem('reactUserEmail', email);
       localStorage.setItem('reactUserPassword', password);
-      alert('Registration Successful! Ab login karein.');
+      alert('Registration successful! Please login to continue.');
       setIsLoginView(true);
       setEmail(''); setPassword('');
     }
@@ -21,7 +21,7 @@ export default function App() {
     if (email === localStorage.getItem('reactUserEmail') && password === localStorage.getItem('reactUserPassword')) {
       alert('Login Successful!');
     } else {
-      alert('Invalid Credentials!');
+      alert('Invalid Email or Password !⚠️');
     }
   };
 
@@ -36,7 +36,7 @@ export default function App() {
         </button>
       </form>
       <p style={{ textAlign: 'center', marginTop: '15px' }}>
-        {isLoginView ? "Account nahi hai?" : "Pehle se account hai?"} {' '}
+        {isLoginView ? "Don't have an account?" : "Already have an account?"} {' '}
         <span style={{ color: '#0070f3', cursor: 'pointer' }} onClick={() => setIsLoginView(!isLoginView)}>
           {isLoginView ? 'Sign Up' : 'Login'}
         </span>
