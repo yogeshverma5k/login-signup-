@@ -26,7 +26,7 @@ export default function App() {
       setEmail(''); setPassword('');
       setShowPassword(false);
     } else {
-      alert('Invalid Credentials!');
+      alert('Invalid Email or Password !⚠️');
     }
   };
 
