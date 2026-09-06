@@ -6,7 +6,12 @@
 }
 
 body {
-  background-color: #f4f7f6;
+  background-image: url("./nature_bg.PNG");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,12 +19,16 @@ body {
 }
 
 .container {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.72);
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
   width: 100%;
   max-width: 380px;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 h2 {
@@ -32,25 +41,25 @@ input {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   font-size: 16px;
   outline: none;
   transition: border 0.3s;
+  background: rgba(255, 255, 255, 0.85);
 }
 
 input:focus {
   border-color: #0070f3;
 }
 
-/* --- Password Wrapper aur Eye Icon ke liye Nayi Styling --- */
 .password-wrapper {
   position: relative;
   width: 100%;
 }
 
 .password-wrapper input {
-  padding-right: 45px; /* Eye button ke liye jagah chhodi */
+  padding-right: 45px;
 }
 
 .eye-icon {
@@ -61,7 +70,6 @@ input:focus {
   font-size: 18px;
   user-select: none;
 }
-/* -------------------------------------------------------- */
 
 button {
   width: 100%;
@@ -83,7 +91,7 @@ button:hover {
 p {
   text-align: center;
   margin-top: 15px;
-  color: #666;
+  color: #444;
   font-size: 14px;
 }
 
