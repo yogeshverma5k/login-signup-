@@ -10,28 +10,45 @@ export default function App() {
   const handleSignup = (e) => {
     e.preventDefault();
 
-    if (email && password) {
-      localStorage.setItem('reactUserEmail', email);
-      localStorage.setItem('reactUserPassword', password);
+    const users = JSON.parse(localStorage.getItem('reactUsers')) || [];
 
-      alert('Registration Successful! Now please login.');
+    const alreadyExists = users.some(
+      (user) => user.email === email
+    );
 
-      setIsLoginView(true);
-      setEmail('');
-      setPassword('');
-      setShowPassword(false);
+    if (alreadyExists) {
+      alert('This email is already registered!');
+      return;
     }
+
+    users.push({
+      email: email,
+      password: password
+    });
+
+    localStorage.setItem('reactUsers', JSON.stringify(users));
+
+    alert('Registration Successful! Now please login.');
+
+    setIsLoginView(true);
+    setEmail('');
+    setPassword('');
+    setShowPassword(false);
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (
-      email === localStorage.getItem('reactUserEmail') &&
-      password === localStorage.getItem('reactUserPassword')
-    ) {
-      alert('Login Successful! Welcome.');
+    const users = JSON.parse(localStorage.getItem('reactUsers')) || [];
 
+    const user = users.find(
+      (user) =>
+        user.email === email &&
+        user.password === password
+    );
+
+    if (user) {
+      alert('Login Successful! Welcome.');
       setEmail('');
       setPassword('');
       setShowPassword(false);
@@ -41,19 +58,21 @@ export default function App() {
   };
 
   const checkSavedData = () => {
-    const savedEmail = localStorage.getItem('reactUserEmail');
-    const savedPassword = localStorage.getItem('reactUserPassword');
+    const users = JSON.parse(localStorage.getItem('reactUsers')) || [];
 
-    if (savedEmail && savedPassword) {
-      alert(
-        'Saved Email: ' +
-        savedEmail +
-        '\nSaved Password: ' +
-        savedPassword
-      );
-    } else {
-      alert('No data saved yet!');
+    if (users.length === 0) {
+      alert('No users registered yet!');
+      return;
     }
+
+    const data = users
+      .map(
+        (user, index) =>
+          `User ${index + 1}\nEmail: ${user.email}\nPassword: ${user.password}`
+      )
+      .join('\n\n');
+
+    alert(data);
   };
 
   return (
@@ -138,7 +157,6 @@ export default function App() {
 
       </form>
 
-      {/* Check Local Storage Button */}
       <button
         type="button"
         onClick={checkSavedData}
