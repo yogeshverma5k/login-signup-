@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url("./nature_bg .PNG");
+  background-image: url("/nature_bg.PNG");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
