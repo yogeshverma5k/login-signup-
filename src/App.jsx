@@ -26,16 +26,19 @@ export default function App() {
       setEmail(''); setPassword('');
       setShowPassword(false);
     } else {
-      alert('Invalid Email or Password !⚠️');
+      alert('Invalid Credentials!');
     }
   };
 
   return (
     <div className="container">
-      <h2>{isLoginView ? 'React Login' : 'React Sign Up'}</h2>
+      {/* Yahan se React word hata diya hai, ab sirf Login ya Sign Up dikhega */}
+      <h2>{isLoginView ? 'Login' : 'Sign Up'}</h2>
+      
       <form onSubmit={isLoginView ? handleLogin : handleSignup}>
         <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
         
+        {/* Password Wrapper */}
         <div style={{ position: 'relative', width: '100%' }}>
           <input 
             type={showPassword ? 'text' : 'password'} 
@@ -46,6 +49,7 @@ export default function App() {
             style={{ width: '100%', paddingRight: '45px' }} 
           />
           
+          {/* Premium Official Eye Icon */}
           <span onClick={() => setShowPassword(!showPassword)} style={{ position: 'absolute', right: '15px', top: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', userSelect: 'none' }}>
             {showPassword ? (
               <svg xmlns="http://w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
