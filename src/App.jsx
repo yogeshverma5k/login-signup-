@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css';
+import './App.css';
 
 export default function App() {
   const [isLoginView, setIsLoginView] = useState(false);
