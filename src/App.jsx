@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
+
 export default function App() {
   const [isLoginView, setIsLoginView] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -63,16 +64,24 @@ export default function App() {
             />
           </div>
 
-          <div className="input-group">
-            <span>🔒</span>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+         <div className="input-group">
+  <span>🔒</span>
+
+  <input
+    type={showPassword ? 'text' : 'password'}
+    placeholder="Password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    required
+  />
+
+  <span
+    className="eye-button"
+    onClick={() => setShowPassword(!showPassword)}
+  >
+    {showPassword ? '👁️' : '👁️‍🗨️'}
+  </span>
+</div>
 
           <button type="submit">
             {isLoginView ? 'Login' : 'Register'}
